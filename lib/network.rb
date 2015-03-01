@@ -1,13 +1,14 @@
-require 'net/http'
-require 'uri'
 require 'open-uri'
 
 class Network
   def connected?
     begin
-      true if open("http://www.google.com/")
-    rescue
+     	open("http://www.google.com/", read_timeout:3)
+     	true
+    rescue => e
+    	puts e.message
       false
     end
   end
 end
+

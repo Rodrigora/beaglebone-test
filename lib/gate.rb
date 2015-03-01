@@ -1,6 +1,7 @@
 require_relative 'gpio.rb'
 require "net/http"
 require "uri"
+require 'timeout'
 
 class Gate
 	TOKEN = 'c751f6cc075b05cf58a39b9a7a21a1e095ec36ba08c241cde4aae77feadf59bc'
@@ -10,7 +11,7 @@ class Gate
 
 	def initialize(pin)
 		GPIO.export(pin)
-		GPIO.gpio_set_direction(pin, 'out')
+		GPIO.gpio_set_direction(pin, 'in')
 		@pin = pin
 		@last_status = nil
 	end
@@ -30,12 +31,18 @@ class Gate
 
 		uri = URI.parse("http://motelm.herokuapp.com/api/v1/gates/status?gate_status=#{status}")
 		http = Net::HTTP.new(uri.host, uri.port)
+		http.read_timeout = 3
 
 		request = Net::HTTP::Post.new(uri.request_uri)
 		request['Authorization'] = TOKEN
 
+		puts 'before'
 		http.request(request)
+		puts 'after'
 
+		status
+       		rescue
+		puts 'rescue'
 		status
 	end
 
