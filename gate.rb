@@ -40,9 +40,8 @@ class Gate
 
 		puts "Updating status: #{status}"
 
-		uri = URI.parse("https://motelm.herokuapp.com/api/v1/")
+		uri = URI.parse("http://motelm.herokuapp.com/api/v1/")
 		http = Net::HTTP.new(uri.host, uri.port)
-		http.use_ssl = true
 
 		request = Net::HTTP::Post.new(uri.request_uri)
 		request.set_form_data({"gate_status" => status})
