@@ -27,6 +27,7 @@ end
 
 class Gate
 	PIN = 60
+	TOKEN = 'c751f6cc075b05cf58a39b9a7a21a1e095ec36ba08c241cde4aae77feadf59bc'
 
 	OPEN = '1'
 	CLOSED = '0'
@@ -40,11 +41,10 @@ class Gate
 
 		puts "Updating status: #{status}"
 
-		uri = URI.parse("http://motelm.herokuapp.com/api/v1/")
+		uri = URI.parse("http://motelm.herokuapp.com/api/v1/gates/status?gate_status=#{status}")
 		http = Net::HTTP.new(uri.host, uri.port)
 
-		request = Net::HTTP::Post.new(uri.request_uri)
-		request.set_form_data({"gate_status" => status})
+		request = Net::HTTP::Post.new(uri.request_uri, {'Authentication' => TOKEN})
 
 		http.request(request)
 	end
