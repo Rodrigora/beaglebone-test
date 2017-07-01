@@ -32,6 +32,10 @@ class Gate
 	OPEN = '1'
 	CLOSED = '0'
 
+	def initialize
+		@last_status = nil
+	end
+
 	def current_status
 		GPIO.gpio_get_value(PIN)
 	end
@@ -39,12 +43,17 @@ class Gate
 	def update_status
 		status = current_status
 
+		return if status == @last_status
+
+		@last_status = status
+
 		puts "Updating status: #{status}"
 
 		uri = URI.parse("http://motelm.herokuapp.com/api/v1/gates/status?gate_status=#{status}")
 		http = Net::HTTP.new(uri.host, uri.port)
 
-		request = Net::HTTP::Post.new(uri.request_uri, {'Authentication' => TOKEN})
+		request = Net::HTTP::Post.new(uri.request_uri)
+		request['Authentication'] = TOKEN
 
 		http.request(request)
 	end
@@ -56,5 +65,5 @@ GPIO.gpio_set_direction(60, 'in')
 gate = Gate.new
 loop do
 	gate.update_status
-	sleep 1
+	sleep 3
 end
