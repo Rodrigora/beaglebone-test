@@ -18,7 +18,7 @@ int main()
 
       gpio_get_value(60, &value);
 
-      cout << "value : " << value;
+      cout << "value : " << value << endl;
    }
 
    return 0;
