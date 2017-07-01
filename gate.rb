@@ -65,5 +65,5 @@ GPIO.gpio_set_direction(60, 'in')
 gate = Gate.new
 loop do
 	gate.update_status
-	sleep 3
+	sleep 0.5
 end
