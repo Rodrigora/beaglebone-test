@@ -53,7 +53,7 @@ class Gate
 		http = Net::HTTP.new(uri.host, uri.port)
 
 		request = Net::HTTP::Post.new(uri.request_uri)
-		request['Authentication'] = TOKEN
+		request['Authorization'] = TOKEN
 
 		http.request(request)
 	end
