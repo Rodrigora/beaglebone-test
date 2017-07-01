@@ -1,5 +1,5 @@
-require 'httparty'
-
+require "net/http"
+require "uri"
 
 SYSFS_GPIO_DIR = "/sys/class/gpio"
 
@@ -40,11 +40,9 @@ class Gate
 
 		puts "Updating status: #{status}"
 
-		HTTParty.post(
-		  "https://motelm.herokuapp.com/api/v1/",
-		  :query => { gate_status: status },
-		  :headers => { 'Authorization' => 'token' }
-		)
+		uri = URI.parse("https://motelm.herokuapp.com/api/v1/")
+
+		Net::HTTP.post_form(uri, {"gate_status" => "status"})
 	end
 end
 
