@@ -1,4 +1,4 @@
-require 'gpio'
+require_relative 'gpio.rb'
 require "net/http"
 require "uri"
 
