@@ -38,8 +38,8 @@ class Gate
 	end
 
 	def open?
-		puts "open? '#{@last_status}'"
-		@last_status == OPEN
+		puts "open? '#{@last_status.strip}'"
+		@last_status.strip == OPEN
 	end
 end
 
