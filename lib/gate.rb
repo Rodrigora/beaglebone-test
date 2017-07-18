@@ -20,7 +20,7 @@ class Gate
 	def update_status
 		status = current_status
 
-		return if status == @last_status
+		return status if status == @last_status
 
 		@last_status = status
 
@@ -33,6 +33,12 @@ class Gate
 		request['Authorization'] = TOKEN
 
 		http.request(request)
+
+		status
+	end
+
+	def open?
+		@last_status == CLOSED
 	end
 end
 
