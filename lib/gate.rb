@@ -38,7 +38,7 @@ class Gate
 	end
 
 	def open?
-		@last_status == CLOSED
+		@last_status == OPEN
 	end
 end
 
