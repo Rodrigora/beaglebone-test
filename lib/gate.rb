@@ -38,7 +38,7 @@ class Gate
 	end
 
 	def open?
-		puts "open? #{@last_status}"
+		puts "open? '#{@last_status}'"
 		@last_status == OPEN
 	end
 end
