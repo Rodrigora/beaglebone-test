@@ -5,8 +5,8 @@ require "uri"
 class Gate
 	TOKEN = 'c751f6cc075b05cf58a39b9a7a21a1e095ec36ba08c241cde4aae77feadf59bc'
 
-	OPEN = '1'
-	CLOSED = '0'
+	OPEN = '0'
+	CLOSED = '1'
 
 	def initialize(pin)
 		@pin = pin
@@ -38,7 +38,6 @@ class Gate
 	end
 
 	def open?
-		puts "open? '#{@last_status.strip}'"
 		@last_status.strip == OPEN
 	end
 end

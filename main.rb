@@ -17,12 +17,10 @@ loop do
 	gate.update_status
 
 	if gate.open?
-		puts "gate.open"
 		led.turn_on
 	else
-		puts "gate.closed"
 		led.turn_off
 	end
 
-	sleep 0.5
+	sleep 0.1
 end
