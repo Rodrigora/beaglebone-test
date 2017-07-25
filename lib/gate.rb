@@ -9,6 +9,8 @@ class Gate
 	CLOSED = '1'
 
 	def initialize(pin)
+		GPIO.export(pin)
+		GPIO.gpio_set_direction(pin, 'out')
 		@pin = pin
 		@last_status = nil
 	end

@@ -5,6 +5,8 @@ class Led
 	OFF = '0'
 
 	def initialize(pin)
+		GPIO.export(pin)
+		GPIO.gpio_set_direction(pin, 'out')
 		@pin = pin
 	end
 
