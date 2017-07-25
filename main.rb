@@ -1,5 +1,6 @@
 require_relative 'lib/gate.rb'
 require_relative 'lib/led.rb'
+require_relative 'lib/network.rb'
 
 GATE_GPIO = 60
 GATE_LED_GPIO = 67
