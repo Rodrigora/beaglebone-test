@@ -21,10 +21,12 @@ loop do
 		gate_led.turn_off
 	end
 
-	if count.zero? && network.connected?
-		connection_led.turn_on
-	else
-		connection_led.turn_off
+	if count.zero?
+		if network.connected?
+			connection_led.turn_on
+		else
+			connection_led.turn_off
+		end
 	end
 
 	sleep 0.1
