@@ -41,7 +41,7 @@ class Gate
 		puts 'after'
 
 		status
-       		rescue
+  rescue
 		puts 'rescue'
 		status
 	end

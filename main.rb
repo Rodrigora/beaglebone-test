@@ -31,7 +31,7 @@ loop do
     end
   end
 
-  if count % 10 == 0
+  if count == 0
     if script_led.on?
       script_led.turn_off
     else
