@@ -5,11 +5,12 @@ require_relative 'lib/network.rb'
 GATE_GPIO = 60
 GATE_LED_GPIO = 67
 NET_ACCESS_LED = 48
+SCRIPT_LED = 31
 
 gate =            Gate.new(GATE_GPIO)
 gate_led =        Led.new(GATE_LED_GPIO)
 connection_led =  Led.new(NET_ACCESS_LED)
-script_led =      Led.new(NET_ACCESS_LED)
+script_led =      Led.new(SCRIPT_LED)
 network =         Network.new
 count =           0
 
